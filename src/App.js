@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {Nav} from "./components/Nav"
+import { TradingViewWidget } from './components/Trading';
+import { Overview } from './components/Overview';
+import { Sentiments } from './components/Sentiments';
+import { Bitcoin } from './components/Bitcoin';
+import { Tokenomics } from './components/Tokenomics';
+import {Team} from "./components/Team"
+import { Coins } from './components/Coins';
+import { TrendingCoin } from './components/TrendingCoin';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav></Nav>
+      <p className="headline">Cryptocurrencies {'>>'} Bitcoin</p>
+      <div className='App-main'>
+      <div className='App-left'>
+      <TradingViewWidget></TradingViewWidget>
+      <Overview></Overview>
+      <Sentiments></Sentiments>
+      <Bitcoin></Bitcoin>
+      <Tokenomics></Tokenomics>
+      <Team></Team>
+      </div>
+      <div className='App-right'>
+      <TrendingCoin></TrendingCoin>
+      </div>
+      </div>
+      <Coins></Coins>
     </div>
   );
 }

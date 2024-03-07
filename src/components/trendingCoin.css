@@ -1,0 +1,41 @@
+.right-ad{
+    text-align: center;
+    border: 2px solid blue;
+    border-radius: 1rem;
+    background-color: blue;
+    padding:1rem 3rem;
+    color: white;
+}
+.right-ad-img{
+    height:15rem;
+    width: 15rem;
+    border-radius: 1rem;
+}
+.ad-start{
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+.trending-coin{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 0rem;
+}
+.trend-coins{
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+}
+.trend-coinss{
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    width: 15rem;
+}
+.coin-image{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+}
