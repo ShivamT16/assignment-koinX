@@ -76,8 +76,8 @@ export function TradingViewWidget() {
       <h3>Bitcoin</h3>
       <p>BTC</p>
       </div>
-      {/* <h3>$ {coin.usd}</h3> */}
-      {/* <p>₹ {coin.inr}</p> */}
+      <h3>$ {coin.usd}</h3>
+      <p>₹ {coin.inr}</p>
     <div className="tradingview-widget-container" ref={container}>
       <div className="tradingview-widget-container__widget"></div>
     </div>
