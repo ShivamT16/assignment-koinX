@@ -5,7 +5,7 @@ import "./trading.css"
 export function TradingViewWidget() {
   const container = useRef();
 
-    const [coin, setCoin] = useState()
+    // const [coin, setCoin] = useState()
   useEffect(() => {
     fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,inr")
     .then((res) =>{
@@ -13,7 +13,7 @@ export function TradingViewWidget() {
     } )
     .then((data) => {
       console.log(data.bitcoin)
-      setCoin(data.bitcoin);
+      // setCoin(data.bitcoin);
     })
   }, [] )
 
@@ -76,8 +76,8 @@ export function TradingViewWidget() {
       <h3>Bitcoin</h3>
       <p>BTC</p>
       </div>
-      <h3>$ {coin.usd}</h3>
-      <p>₹ {coin.inr}</p>
+      {/* <h3>$ {coin.usd}</h3> */}
+      {/* <p>₹ {coin.inr}</p> */}
     <div className="tradingview-widget-container" ref={container}>
       <div className="tradingview-widget-container__widget"></div>
     </div>
