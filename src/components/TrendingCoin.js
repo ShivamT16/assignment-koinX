@@ -1,44 +1,50 @@
-import { useEffect, useState } from "react";
-import "./trendingCoin.css"
+import { useState } from "react";
+import { useTrendingCoins } from "../utils/useTrendingCoins";
 
-export const TrendingCoin = () => {
-    const [coin, setCoin] = useState([])
-  useEffect(() => {
-    fetch("https://api.coingecko.com/api/v3/search/trending")
-    .then((res) =>{
-      return res.json();
-    } )
-    .then((data) => {
-    //   console.log(data.coins)
-      setCoin(data.coins);
-    })
-  }, [] )
+export const TrendingCoins = () => {
+
+  const [slide, setSlide] = useState(0)
+
+  const coin = useTrendingCoins()
+
+  const handleNext = () =>{
+    slide > coin.length - slide/3 ? setSlide(slide) : 
+    setSlide(slide + 3)
+  }
+  const handlePrevious = () => {
+    slide === 0 ? setSlide(0) : setSlide(slide - 3)
+  }
 
     return(
-        <div >
-            <div className="right-ad" >
-                <h3>Get Started with KoinX for FREE</h3>
-                <p>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</p>
-                <img className="right-ad-img" alt="ad" src="https://img.freepik.com/free-vector/businessman-with-bulb_24877-76642.jpg?t=st=1709796858~exp=1709800458~hmac=bb0541cbfe75b85a70ae1abfa9214949bc110a1c2e8cafa67f3c71f72e06034f&w=740" ></img>
-                <p className="ad-start"><strong>Get Started for FREE {"->"}</strong> </p>
-            </div>
-            <div className="trending-coin">
-            <h2>Trending Coins (24)</h2>
+        <div className="relative">
+          <div className="flex gap-2.5 overflow-hidden">    
             {
-             coin.slice(0,3).map((items) => (
-                <div className="trend-coins"> 
-                <div className="trend-coinss">
-                    <img className="coin-image" alt="logo" src={items.item.small} ></img>
-                    <p>{items.item.name}</p>
-                    <p className="coin-name" >({items.item.symbol})</p>
-                    </div>
-                    <div>
-                    <p className="price-Change" style={{"color": items.item.data.price_change_percentage_24h.usd > 0 ? "green" : "red"}} >{items.item.data.price_change_percentage_24h.usd.toFixed()/100} % </p>
-                   </div>
+             coin.map((items) => (
+              <div>
+                
+                <div className="border-2 rounded-xl p-4 w-60" style={{transform: `translateX(-${slide *100}%)`, transitionDuration: "1s" }}> 
+                  <div className="flex items-center gap-2"> 
+                     <img className="h-6 rounded-full" alt="logo" src={items.item.small} ></img>
+                     <p>{items.item.symbol}</p>
+                     <p className={`w-fit px-1 ${items.item.data.price_change_percentage_24h.usd > 0 ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'}`} >
+                     {items.item.data.price_change_percentage_24h.usd.toFixed()/100}% </p>
+                  </div>
+
+                  <h3 className="text-xl font-medium py-2" >${items.item.data.price.toFixed(6)} </h3>
+                  <img alt="chart" className="w-[80%] h-14 mx-4" src={items.item.data.sparkline} ></img>
+                    
                 </div>
-             )  )
-            }
+                
+              </div>
+             ) ) }
             </div>
-        </div>
+
+            <div className="flex justify-between">
+            <button onClick={handlePrevious} className="bg-slate-200 h-fit text-xl bottom-24 px-3 text-slate-500 font-bold py-1.5 rounded-full relative"> {"<"} </button>        
+            <button onClick={handleNext} className="bg-slate-200 h-fit text-xl bottom-24 px-3 text-slate-500 font-bold py-1.5 rounded-full relative"> {">"} </button>
+            </div>
+
+            </div>
+            
     )
 }

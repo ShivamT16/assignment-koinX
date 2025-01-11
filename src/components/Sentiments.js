@@ -1,71 +1,56 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import "./sentiments.css"
+import { useState } from "react";
 import image from "./images/analysis.png"
- 
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, padding: "2rem" }}
-        onClick={onClick}
-      />
-    );
-  }
-  
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, background: "lightgrey", borderRadius:"2rem" }}
-        onClick={onClick}
-      />
-    );
-  }
-  
+import newsIcon from "./images/newsIcon.png"
 
 export const Sentiments = () => {
-    var settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
-      };
-    return (
-        <div className="sentiments">
-            <h2>Sentiments</h2>
-            <h3 style={{color: "grey"}}>Key Events</h3>
-            <div className="sentiment-blog">
-                <Slider {...settings} >
-<div className="blog" >
-    {/* <div> */}
-    {/* <img alt="blog-img" className="blog-img" src={newsIcon} ></img> */}
-    {/* </div> */}
-    {/* <div className="blog-para" > */}
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,  </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  laborum.</p>
-    {/* </div> */}
-</div>
-<div className="blog">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,  </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  laborum.</p>
-</div>
-<div className="blog">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,  </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  laborum.</p>
-</div>
-</Slider>
-            </div>
-            <div>
-<h3 style={{color: "grey"}}>Analyst Estimates</h3>
-<img className="analtic-img" alt="analysis loading" src={image} ></img>
-            </div>
+  const [slide, setSlide] = useState(0)
+
+  const handleClick = () => { slide === 3 ? setSlide(0) : setSlide( slide + 1) }
+
+  return(
+
+  <section className="bg-white p-4 rounded-lg relative overflow-hidden">
+    <h1 className="text-2xl font-semibold py-2">Sentiments {slide}</h1>
+    <h3 className="text-lg font-medium text-slate-600 mb-4">Key Events <span className="border text-sm px-2 text-white bg-slate-400 rounded-full">ⅰ</span> </h3>
+
+  <div className="flex gap-2 flex-nowrap w-screen" style={{transform: `translateX(-${slide *20}%)`, transitionDuration: "1s" }}>
+  <div className="flex gap-4">
+    <div className="flex gap-2 p-6 text-sm bg-blue-100 rounded-xl">
+       <img alt="blog-img" className="h-9 rounded-full" src={newsIcon} />
+       <div>
+        <h2 className="font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</h2>
+        <p className="text-slate-500 py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse svvhj sdfghj laborum.</p>
         </div>
-    )
-}
+    </div>
+  </div>
+
+  <div className="flex gap-4">
+    <div className="flex gap-2 p-5 text-sm bg-green-100 rounded-xl">
+       <img alt="blog-img" className="h-9 rounded-full" src={newsIcon} />
+       <div>
+        <h2 className="font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</h2>
+        <p className="text-slate-500 py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse svvhj sdfghj laborum.</p>
+        </div>
+    </div>
+  </div>
+
+  <div className="flex gap-4">
+    <div className="flex gap-2 p-5 text-sm bg-blue-100 rounded-xl">
+       <img alt="blog-img" className="h-9 rounded-full" src={newsIcon} />
+       <div>
+        <h2 className="font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</h2>
+        <p className="text-slate-500 py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse svvhj sdfghj laborum.</p>
+        </div>
+    </div>
+  </div>
+
+  </div>
+  <button onClick={handleClick} className="bg-white text-xl bottom-28 left-[30rem] md:left-[48rem] px-4 py-2 text-slate-500 font-bold rounded-full relative"> {">"} </button>
+
+
+    <h3 className="text-lg font-medium text-slate-600">Analyst Estimates <span className="border text-sm px-2 text-white bg-slate-400 rounded-full">ⅰ</span> </h3>
+    <img className="w-[70%]" alt="analysis loading" src={image} ></img>
+  
+  </section>
+
+)};
