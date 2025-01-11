@@ -10,7 +10,7 @@ export const Sentiments = () => {
   return(
 
   <section className="bg-white p-4 rounded-lg relative overflow-hidden">
-    <h1 className="text-2xl font-semibold py-2">Sentiments {slide}</h1>
+    <h1 className="text-2xl font-semibold py-2">Sentiments </h1>
     <h3 className="text-lg font-medium text-slate-600 mb-4">Key Events <span className="border text-sm px-2 text-white bg-slate-400 rounded-full">ⅰ</span> </h3>
 
   <div className="flex gap-2 flex-nowrap w-screen" style={{transform: `translateX(-${slide *20}%)`, transitionDuration: "1s" }}>

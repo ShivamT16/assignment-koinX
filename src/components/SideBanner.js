@@ -17,7 +17,7 @@ export const SideBanner = () => {
             <h2 className="text-2xl font-bold py-2">Trending Coins (24h)</h2>
             {
              coin.slice(0,3).map((items) => (
-                <div className="flex justify-between items-center"> 
+                <div key={items.item.symbol} className="flex justify-between items-center"> 
 
                   <div className="flex justify-between items-center py-2">
                     <img className="h-6 rounded-full" alt="Coinlogo" src={items.item.small} ></img>

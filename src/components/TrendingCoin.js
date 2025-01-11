@@ -20,7 +20,7 @@ export const TrendingCoins = () => {
           <div className="flex gap-2.5 overflow-hidden">    
             {
              coin.map((items) => (
-              <div>
+              <div key={items.item.symbol}>
                 
                 <div className="border-2 rounded-xl p-4 w-60" style={{transform: `translateX(-${slide *100}%)`, transitionDuration: "1s" }}> 
                   <div className="flex items-center gap-2"> 
